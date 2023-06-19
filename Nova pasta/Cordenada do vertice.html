@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Planilha de Divisão de Gastos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function calcularDivisao() {
+            var ganhoMensal = parseFloat(document.getElementById("ganhoMensal").value);
+            var necessidadesPorcentagem = parseFloat(document.getElementById("necessidadesPorcentagem").value);
+            var poupancaPorcentagem = parseFloat(document.getElementById("poupancaPorcentagem").value);
+            var dividasPorcentagem = parseFloat(document.getElementById("dividasPorcentagem").value);
+            var investimentosPorcentagem = parseFloat(document.getElementById("investimentosPorcentagem").value);
+            var educacaoPorcentagem = parseFloat(document.getElementById("educacaoPorcentagem").value);
+            var lazerPorcentagem = parseFloat(document.getElementById("lazerPorcentagem").value);
+
+            var necessidadesBasicas = ganhoMensal * (necessidadesPorcentagem / 100);
+            var poupancaEmergencia = ganhoMensal * (poupancaPorcentagem / 100);
+            var pagamentoDividas = ganhoMensal * (dividasPorcentagem / 100);
+            var investimentosLongoPrazo = ganhoMensal * (investimentosPorcentagem / 100);
+            var educacaoDesenvolvimento = ganhoMensal * (educacaoPorcentagem / 100);
+            var lazerQualidadeVida = ganhoMensal * (lazerPorcentagem / 100);
+
+            document.getElementById("necessidadesBasicas").textContent = necessidadesBasicas.toFixed(2);
+            document.getElementById("poupancaEmergencia").textContent = poupancaEmergencia.toFixed(2);
+            document.getElementById("pagamentoDividas").textContent = pagamentoDividas.toFixed(2);
+            document.getElementById("investimentosLongoPrazo").textContent = investimentosLongoPrazo.toFixed(2);
+            document.getElementById("educacaoDesenvolvimento").textContent = educacaoDesenvolvimento.toFixed(2);
+            document.getElementById("lazerQualidadeVida").textContent = lazerQualidadeVida.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Planilha de Divisão de Gastos</h1>
+        <div class="form-group">
+            <label for="ganhoMensal">Ganho Mensal:</label>
+            <input type="number" id="ganhoMensal" min="0" step="0.01" value="0">
+        </div>
+
+        <div class="form-group">
+            <label for="necessidadesPorcentagem">Necessidades Básicas (%):</label>
+            <input type="number" id="necessidadesPorcentagem" min="0" max="100" value="50">
+        </div>
+
+        <div class="form-group">
+            <label for="poupancaPorcentagem">Poupança de Emergência (%):</label>
+            <input type="number" id="poupancaPorcentagem" min="0" max="100" value="10">
+        </div>
+
+        <div class="form-group">
+            <label for="dividasPorcentagem">Pagamento de Dívidas (%):</label>
+            <input type="number" id="dividasPorcentagem" min="0" max="100" value="10">
+        </div>
+
+        <div class="form-group">
+            <label for="investimentosPorcentagem">Investimentos de Longo Prazo (%):</label>
+            <input type="number" id="investimentosPorcentagem" min="0" max="100" value="10">
+        </div>
+
+        <div class="form-group">
+            <label for="educacaoPorcentagem">Educação e Desenvolvimento (%):</label>
+            <input type="number" id="educacaoPorcentagem" min="0" max="100" value="5">
+        </div>
+
+        <div class="form-group">
+            <label for="lazerPorcentagem">Lazer e Qualidade de Vida (%):</label>
+            <input type="number" id="lazerPorcentagem" min="0" max="100" value="10">
+        </div>
+
+        <div class="button-container">
+            <button onclick="calcularDivisao()">Calcular Divisão</button>
+        </div>
+
+        <table>
+            <tr>
+                <th>Categoria</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td>Necessidades Básicas:</td>
+                <td id="necessidadesBasicas"></td>
+            </tr>
+            <tr>
+                <td>Poupança de Emergência:</td>
+                <td id="poupancaEmergencia"></td>
+            </tr>
+            <tr>
+                <td>Pagamento de Dívidas:</td>
+                <td id="pagamentoDividas"></td>
+            </tr>
+            <tr>
+                <td>Investimentos de Longo Prazo:</td>
+                <td id="investimentosLongoPrazo"></td>
+            </tr>
+            <tr>
+                <td>Educação e Desenvolvimento:</td>
+                <td id="educacaoDesenvolvimento"></td>
+            </tr>
+            <tr>
+                <td>Lazer e Qualidade de Vida:</td>
+                <td id="lazerQualidadeVida"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -23,13 +23,13 @@ header {
   left: 0;
   width: 100%;
   z-index: 100;
-  background-color: #222222; /* Fundo cinza escuro */
+  background-color: #000000; /* Fundo cinza escuro */
   padding: 20px;
   text-align: center;
 }
 
 .site-title {
-  color: black; /* Cor do texto "Economize +" como preto */
+  color: rgb(255, 255, 255); /* Cor do texto "Economize +" como preto */
   margin-bottom: 20px; /* Espaçamento inferior para separar o título dos links */
 }
 
