@@ -27,6 +27,14 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mt-4">
+                    <h2>Texto descriptografado:</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="textoDescriptografado" readonly>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="descriptografar()">Descriptografar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -39,6 +47,7 @@
             const chave = 'chave_super_secreta'; // Chave para criptografia (não deve ser pública!)
             const textoCriptografado = CryptoJS.AES.encrypt(texto, chave).toString();
             document.getElementById('resultado').value = textoCriptografado;
+            document.getElementById('textoDescriptografado').value = '';
         }
 
         function copiarTexto() {
@@ -47,6 +56,14 @@
             resultado.setSelectionRange(0, 99999);
             document.execCommand('copy');
             alert('Texto criptografado copiado para a área de transferência!');
+        }
+
+        function descriptografar() {
+            const textoCriptografado = document.getElementById('resultado').value;
+            const chave = 'chave_super_secreta'; // Chave para criptografia (a mesma usada na criptografia)
+            const bytesDescriptografados = CryptoJS.AES.decrypt(textoCriptografado, chave);
+            const textoDescriptografado = bytesDescriptografados.toString(CryptoJS.enc.Utf8);
+            document.getElementById('textoDescriptografado').value = textoDescriptografado;
         }
     </script>
 </body>
