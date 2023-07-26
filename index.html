@@ -1,39 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Criptografia AES</title>
+    <title>Criptografia</title>
     <!-- Adicionando Bootstrap para melhorar o estilo -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            background-color: #333;
+            color: #fff;
+            border: none;
+        }
+
+        .card-header {
+            background-color: #444;
+            border-bottom: none;
+        }
+
+        .btn-primary,
+        .btn-secondary,
+        .btn-success {
+            background-color: #666;
+            border-color: #666;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover,
+        .btn-success:hover {
+            background-color: #555;
+            border-color: #555;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <h1 class="mb-4">Criptografia AES</h1>
-                <form>
-                    <div class="form-group">
-                        <label for="texto">Digite o texto a ser criptografado:</label>
-                        <input type="text" class="form-control" id="texto" name="texto">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="mb-4">Criptografia</h1>
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="criptografar()">Criptografar</button>
-                </form>
-
-                <div class="mt-4">
-                    <h2>Texto criptografado:</h2>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="resultado" readonly>
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" type="button" onclick="copiarTexto()">Copiar</button>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="texto">Digite o texto:</label>
+                                <input type="text" class="form-control" id="texto" name="texto">
+                            </div>
+                            <div class="form-group">
+                                <label for="chave">Digite a chave (ou deixe em branco para gerar uma aleatória):</label>
+                                <input type="text" class="form-control" id="chave" name="chave">
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="opcao" id="opcaoCriptografar" value="criptografar" checked>
+                                <label class="form-check-label" for="opcaoCriptografar">Criptografar</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="opcao" id="opcaoDescriptografar" value="descriptografar">
+                                <label class="form-check-label" for="opcaoDescriptografar">Descriptografar</label>
+                            </div>
+                            <button type="button" class="btn btn-primary mt-2 mr-2" onclick="executarOperacao()">Executar</button>
+                            <button type="button" class="btn btn-secondary mt-2" onclick="limparCampos()">Limpar</button>
+                            <button type="button" class="btn btn-success mt-2 ml-2" onclick="gerarChaveAleatoria()">Gerar Chave Aleatória</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h2>Resultado:</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="resultado" readonly>
+                            <div class="input-group-append">
+                                <button class="btn btn-success" type="button" onclick="copiarTexto()">Copiar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#tradutorModal">Abrir Tradutor</button>
+            </div>
+        </div>
+    </div>
 
-                <div class="mt-4">
-                    <h2>Texto descriptografado:</h2>
+    <!-- Tradutor Modal -->
+    <div class="modal fade" id="tradutorModal" tabindex="-1" role="dialog" aria-labelledby="tradutorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tradutorModalLabel">Tradutor de Alfabeto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="textoDescriptografado" readonly>
+                        <label for="traducao">Digite o texto a ser traduzido:</label>
+                        <input type="text" class="form-control" id="traducao" name="traducao">
                     </div>
-                    <button type="button" class="btn btn-success" onclick="descriptografar()">Descriptografar</button>
+                    <button type="button" class="btn btn-primary mt-2" onclick="traduzirTexto()">Traduzir</button>
+                    <button type="button" class="btn btn-secondary mt-2" onclick="limparTraducao()">Limpar</button>
                 </div>
             </div>
         </div>
@@ -42,12 +115,37 @@
     <!-- Inclua o CryptoJS no seu projeto -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
-        function criptografar() {
+        // Alfabeto personalizado para o tradutor
+        const alfabetoOriginal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const alfabetoTraduzido = 'zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA';
+
+        function executarOperacao() {
             const texto = document.getElementById('texto').value;
-            const chave = 'chave_super_secreta'; // Chave para criptografia (não deve ser pública!)
-            const textoCriptografado = CryptoJS.AES.encrypt(texto, chave).toString();
-            document.getElementById('resultado').value = textoCriptografado;
-            document.getElementById('textoDescriptografado').value = '';
+            let chave = document.getElementById('chave').value;
+            const opcao = document.querySelector('input[name="opcao"]:checked').value;
+            let resultado;
+
+            if (!texto || (!chave && opcao === 'criptografar')) {
+                alert('Digite o texto e a chave!');
+                return;
+            }
+
+            if (opcao === 'criptografar') {
+                if (!chave) {
+                    alert('Digite uma chave para criptografar!');
+                    return;
+                }
+                resultado = CryptoJS.AES.encrypt(texto, chave).toString();
+            } else if (opcao === 'descriptografar') {
+                if (!chave) {
+                    alert('Digite a chave para descriptografar!');
+                    return;
+                }
+                const bytesDescriptografados = CryptoJS.AES.decrypt(texto, chave);
+                resultado = bytesDescriptografados.toString(CryptoJS.enc.Utf8);
+            }
+
+            document.getElementById('resultado').value = resultado;
         }
 
         function copiarTexto() {
@@ -55,15 +153,40 @@
             resultado.select();
             resultado.setSelectionRange(0, 99999);
             document.execCommand('copy');
-            alert('Texto criptografado copiado para a área de transferência!');
+            alert('Texto copiado para a área de transferência!');
         }
 
-        function descriptografar() {
-            const textoCriptografado = document.getElementById('resultado').value;
-            const chave = 'chave_super_secreta'; // Chave para criptografia (a mesma usada na criptografia)
-            const bytesDescriptografados = CryptoJS.AES.decrypt(textoCriptografado, chave);
-            const textoDescriptografado = bytesDescriptografados.toString(CryptoJS.enc.Utf8);
-            document.getElementById('textoDescriptografado').value = textoDescriptografado;
+        function limparCampos() {
+            document.getElementById('texto').value = '';
+            document.getElementById('chave').value = '';
+            document.getElementById('resultado').value = '';
+        }
+
+        function gerarChaveAleatoria() {
+            const chaveAleatoria = CryptoJS.lib.WordArray.random(16).toString();
+            document.getElementById('chave').value = chaveAleatoria;
+        }
+
+        function traduzirTexto() {
+            const texto = document.getElementById('traducao').value;
+            let textoTraduzido = '';
+
+            for (let i = 0; i < texto.length; i++) {
+                const char = texto[i];
+                const index = alfabetoOriginal.indexOf(char);
+
+                if (index !== -1) {
+                    textoTraduzido += alfabetoTraduzido[index];
+                } else {
+                    textoTraduzido += char;
+                }
+            }
+
+            document.getElementById('traducao').value = textoTraduzido;
+        }
+
+        function limparTraducao() {
+            document.getElementById('traducao').value = '';
         }
     </script>
 </body>
