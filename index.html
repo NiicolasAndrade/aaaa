@@ -119,8 +119,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <script>
         // Alfabeto personalizado para o tradutor
-        const alfabetoOriginal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const alfabetoTraduzido = 'zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA';
+        const alfabetoOriginal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789áàâãéèêíìîóòôõúùûçÁÀÂÃÉÈÊÍÌÎÓÒÔÕÚÙÛÇ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+        const alfabetoTraduzido = 'zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789àáâãèéêìíîòóôõùúûçÁÀÂÃÉÈÊÍÌÎÓÒÔÕÚÙÛÇ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
 
         function executarOperacao() {
             const texto = document.getElementById('texto').value;
