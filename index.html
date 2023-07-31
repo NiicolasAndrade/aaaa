@@ -1,196 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Criptografia</title>
-    <!-- Adicionando Bootstrap e jQuery para melhorar o estilo e o funcionamento do pop-up modal -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de TA1 - 1º Ano de Administração</title>
     <style>
         body {
-            background-color: #000;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #4CAF50;
             color: #fff;
+            text-align: center;
+            padding: 1rem;
         }
 
-        .container {
-            margin-top: 50px;
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
 
-        .card {
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        header nav li {
+            display: inline-block;
+            margin: 0 1rem;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #4CAF50;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+        }
+
+        section ul {
+            list-style: disc;
+            margin-left: 2rem;
+            padding-left: 0.5rem;
+        }
+
+        section li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
             background-color: #333;
             color: #fff;
-            border: none;
+            text-align: center;
+            padding: 1rem;
         }
 
-        .card-header {
-            background-color: #444;
-            border-bottom: none;
-        }
-
-        .btn-primary,
-        .btn-secondary,
-        .btn-success {
-            background-color: #666;
-            border-color: #666;
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover,
-        .btn-success:hover {
-            background-color: #555;
-            border-color: #555;
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h1 class="mb-4">Criptografia</h1>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="texto">Digite o texto:</label>
-                                <input type="text" class="form-control" id="texto" name="texto">
-                            </div>
-                            <div class="form-group">
-                                <label for="chave">Digite a chave (ou deixe em branco para gerar uma aleatória):</label>
-                                <input type="text" class="form-control" id="chave" name="chave">
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="opcao" id="opcaoCriptografar" value="criptografar" checked>
-                                <label class="form-check-label" for="opcaoCriptografar">Criptografar</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="opcao" id="opcaoDescriptografar" value="descriptografar">
-                                <label class="form-check-label" for="opcaoDescriptografar">Descriptografar</label>
-                            </div>
-                            <button type="button" class="btn btn-primary mt-2 mr-2" onclick="executarOperacao()">Executar</button>
-                            <button type="button" class="btn btn-secondary mt-2" onclick="limparCampos()">Limpar</button>
-                            <button type="button" class="btn btn-success mt-2 ml-2" onclick="gerarChaveAleatoria()">Gerar Chave Aleatória</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="card mt-4">
-                    <div class="card-header">
-                        <h2>Resultado:</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="resultado" readonly>
-                            <div class="input-group-append">
-                                <button class="btn btn-success" type="button" onclick="copiarTexto()">Copiar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#tradutorModal">Abrir Tradutor</button>
-            </div>
-        </div>
-    </div>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Sala de TA1 - 1º Ano de Administração</h1>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#topicos">Tópicos</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Tradutor Modal -->
-    <div class="modal fade" id="tradutorModal" tabindex="-1" role="dialog" aria-labelledby="tradutorModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="tradutorModalLabel">Tradutor de Alfabeto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="traducao">Digite o texto a ser traduzido:</label>
-                        <input type="text" class="form-control" id="traducao" name="traducao">
-                    </div>
-                    <button type="button" class="btn btn-primary mt-2" onclick="traduzirTexto()">Traduzir</button>
-                    <button type="button" class="btn btn-secondary mt-2" onclick="limparTraducao()">Limpar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Sobre a sala -->
+    <section id="sobre">
+        <h2>Sobre a Sala de TA1</h2>
+        <p>Bem-vindo à Sala de TA1 do 1º Ano de Administração! Aqui você encontrará informações valiosas sobre nosso curso e como podemos ajudá-lo a iniciar sua jornada acadêmica com sucesso.</p>
+    </section>
 
-    <!-- Inclua o CryptoJS no seu projeto -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-    <script>
-        // Alfabeto personalizado para o tradutor
-        const alfabetoOriginal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789áàâãéèêíìîóòôõúùûçÁÀÂÃÉÈÊÍÌÎÓÒÔÕÚÙÛÇ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-        const alfabetoTraduzido = 'zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789àáâãèéêìíîòóôõùúûçÁÀÂÃÉÈÊÍÌÎÓÒÔÕÚÙÛÇ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+    <!-- Tópicos da sala -->
+    <section id="topicos">
+        <h2>Tópicos</h2>
+        <ul>
+            <li>Introdução ao Curso de Administração</li>
+            <li>Princípios de Gestão</li>
+            <li>Contabilidade Básica</li>
+            <li>Marketing Fundamentals</li>
+        </ul>
+    </section>
 
-        function executarOperacao() {
-            const texto = document.getElementById('texto').value;
-            let chave = document.getElementById('chave').value;
-            const opcao = document.querySelector('input[name="opcao"]:checked').value;
-            let resultado;
+    <!-- Recursos úteis -->
+    <section id="recursos">
+        <h2>Recursos</h2>
+        <ul>
+            <li><a href="link_para_recurso1">Apostila de TA1</a></li>
+            <li><a href="link_para_recurso2">Vídeos de Aula</a></li>
+            <li><a href="link_para_recurso3">Exemplos de Projetos</a></li>
+        </ul>
+    </section>
 
-            if (!texto || (!chave && opcao === 'criptografar')) {
-                alert('Digite o texto e a chave!');
-                return;
-            }
-
-            if (opcao === 'criptografar') {
-                if (!chave) {
-                    alert('Digite uma chave para criptografar!');
-                    return;
-                }
-                resultado = CryptoJS.AES.encrypt(texto, chave).toString();
-            } else if (opcao === 'descriptografar') {
-                if (!chave) {
-                    alert('Digite a chave para descriptografar!');
-                    return;
-                }
-                const bytesDescriptografados = CryptoJS.AES.decrypt(texto, chave);
-                resultado = bytesDescriptografados.toString(CryptoJS.enc.Utf8);
-            }
-
-            document.getElementById('resultado').value = resultado;
-        }
-
-        function copiarTexto() {
-            const resultado = document.getElementById('resultado');
-            resultado.select();
-            resultado.setSelectionRange(0, 99999);
-            document.execCommand('copy');
-            alert('Texto copiado para a área de transferência!');
-        }
-
-        function limparCampos() {
-            document.getElementById('texto').value = '';
-            document.getElementById('chave').value = '';
-            document.getElementById('resultado').value = '';
-        }
-
-        function gerarChaveAleatoria() {
-            const chaveAleatoria = CryptoJS.lib.WordArray.random(16).toString();
-            document.getElementById('chave').value = chaveAleatoria;
-        }
-
-        function traduzirTexto() {
-            const texto = document.getElementById('traducao').value;
-            let textoTraduzido = '';
-
-            for (let i = 0; i < texto.length; i++) {
-                const char = texto[i];
-                const index = alfabetoOriginal.indexOf(char);
-
-                if (index !== -1) {
-                    textoTraduzido += alfabetoTraduzido[index];
-                } else {
-                    textoTraduzido += char;
-                }
-            }
-
-            document.getElementById('traducao').value = textoTraduzido;
-        }
-
-        function limparTraducao() {
-            document.getElementById('traducao').value = '';
-        }
-    </script>
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2023 - Sala de TA1. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
