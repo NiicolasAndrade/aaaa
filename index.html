@@ -1,10 +1,269 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Minha Página</title>
+  <title>Planilha de Nomes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 20px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #4CAF50;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
-  <h1>Minha Página com Sala de Chat</h1>
-  <iframe src="https://ibb.co/5BGRf8w" width="600" height="400"></iframe>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Saiu?</th>
+        <th>Contador</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ALEF PAIVA DE ARAUJO</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>ANA KAROLINE DA SILVA DO NASCIMENTO</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>ANA VITORIA FELIX DA SILVA OLIVEIRA</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <!-- Adicione as outras linhas com os nomes aqui -->
+      <tr>
+        <td>ANAMI DE PAULO AMARAL</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>ANDREY PABLO SALES NOJOSA</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>ANNY VIOLETA LOPES FERREIRA</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>BIANCA EMILLY HOLANDA DA SILVA</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>CAIO ENOQUE COSTA FERREIRA</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>DEBORA ELEN NASCIMENTO COSTA </td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td> EDSON SILVA DE VASCONCELOS</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr><tr>
+        <td>ELOA BARBOSA RODRIGUES SALES</td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <tr>
+        <td>EMILLY DA SILVA DE FREITAS </td>
+        <td><button onclick="saiu(this)">Saiu</button></td>
+        <td class="contador">3</td>
+      </tr>
+      <td>EVELYN DE SOUSA BEZERRA</td>
+      <td><button onclick="saiu(this)">Saiu</button></td>
+      <td class="contador">3</td>
+    </tr>
+    <td>EVELYN HILARY LIMA LINHARES</td>
+    <td><button onclick="saiu(this)">Saiu</button></td>
+    <td class="contador">3</td>
+  </tr>
+  <td>FILIPE ERNANDEZ MAGALHAES FREITAS</td>
+  <td><button onclick="saiu(this)">Saiu</button></td>
+  <td class="contador">3</td>
+</tr>
+<td> FRANCISCA FLAVIANE DA SILVA AGUIAR</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>GABRIEL DA SILVA COUTINHO </td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>IZABEL MENDONÇA DA SILVA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>JENYFFER MAIRA VIEIRA REMONTTI</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>JUAN DE ANDRADE DE FREITAS</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>KAIKY DA SILVA GOMES</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>LAYSLA OLIVEIRA DA SILVA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>LEVI DA ROCHA FERREIRA COUTO</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>LUIZ ANTONIO DE SOUSA ALMEIDA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>LUIS FELIPE DA SILVA LIMA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>MARCELO MOURA LIMA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>MARIA CLARICE NUNES NOGUEIRA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>MARIA JULIA VICTOR VASCONCELOS</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td> MARIA STEPHANY DA SILVA MARTINS</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>MARIANA NASCIMENTO PINTO</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>MATHEUS BARBOSA DA ROCHA SILVA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>MONIKA DE CASTRO LESSA </td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>NAYARA KELLY MONTEIRO SILVA </td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>NICOLAS FERREIRA ANDRADE</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>PAOLA RIKELY MOREIRA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>PEDRO LUCAS CORREIA RAVETE</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>RAYANE FERREIRA PRATA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>RENAN VICTOR REBOUCAS DE SOUSA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td> ROSIELY CARVALHO DE SOUSA </td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>SUZANA GABRIELLA FERREIRA DE SALES </td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>TELRY HELLEN GOMES FERREIRA </td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<td>THAYNA COSTA DE ANDRADE DANTAS</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+<td>VERBENIA BARROS SILVA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+ <tr>
+<td>VITORIA INGRID DA SILVA MIRANDA</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+<tr>
+<td>YGOR GUEDES DE AZEVEDO.</td>
+<td><button onclick="saiu(this)">Saiu</button></td>
+<td class="contador">3</td>
+</tr>
+      
+        
+    </tbody>
+  </table>
+
+  <script>
+    function saiu(button) {
+      var contador = button.parentNode.nextElementSibling;
+      var valor = parseInt(contador.textContent);
+
+      if (valor > 0) {
+        valor--;
+        contador.textContent = valor;
+
+        if (valor === 0) {
+          button.setAttribute('disabled', 'true');
+          button.textContent = "Não pode sair mais";
+        }
+      }
+    }
+  </script>
 </body>
 </html>
