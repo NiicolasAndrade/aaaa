@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Página de Login</title>
+    <style>
+       body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    select,
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    #dailyPassword {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form onsubmit="login(event)">
+            <label for="loginName">Nome:</label>
+            <select id="loginName" required>
+                <option disabled selected>Selecione o nome</option>
+                <option value="ALEF PAIVA DE ARAUJO">ALEF PAIVA DE ARAUJO</option>
+                <option value="ANA KAROLINE DA SILVA DO NASCIMENTO">ANA KAROLINE DA SILVA DO NASCIMENTO</option>
+                <option value="ANA VITORIA FELIX DA SILVA OLIVEIRA">ANA VITORIA FELIX DA SILVA OLIVEIRA</option>
+                <option value="ANAMI DE PAULO AMARAL">ANAMI DE PAULO AMARAL</option>
+                <option value="ANDREY PABLO SALES NOJOSA">ANDREY PABLO SALES NOJOSA</option>
+                <option value="ANNY VIOLETA LOPES FERREIRA">ANNY VIOLETA LOPES FERREIRA</option>
+                <option value="BIANCA EMILLY HOLANDA DA SILVA">BIANCA EMILLY HOLANDA DA SILVA</option>
+                <option value="CAIO ENOQUE COSTA FERREIRA">CAIO ENOQUE COSTA FERREIRA</option>
+                <option value="DEBORA ELEN NASCIMENTO COSTA">DEBORA ELEN NASCIMENTO COSTA</option>
+                <option value="EDSON SILVA DE VASCONCELOS">EDSON SILVA DE VASCONCELOS</option>
+                <option value="ELOA BARBOSA RODRIGUES SALES">ELOA BARBOSA RODRIGUES SALES</option>
+                <option value="EMILLY DA SILVA DE FREITAS">EMILLY DA SILVA DE FREITAS</option>
+                <option value="EVELYN DE SOUSA BEZERRA">EVELYN DE SOUSA BEZERRA</option>
+                <option value="EVELYN HILARY LIMA LINHARES">EVELYN HILARY LIMA LINHARES</option>
+                <option value="FILIPE ERNANDEZ MAGALHAES FREITAS">FILIPE ERNANDEZ MAGALHAES FREITAS</option>
+                <option value="FRANCISCA FLAVIANE DA SILVA AGUIAR">FRANCISCA FLAVIANE DA SILVA AGUIAR</option>
+                <option value="GABRIEL DA SILVA COUTINHO">GABRIEL DA SILVA COUTINHO</option>
+                <option value="IZABEL MENDONÇA DA SILVA">IZABEL MENDONÇA DA SILVA</option>
+                <option value="JENYFFER MAIRA VIEIRA REMONTTI">JENYFFER MAIRA VIEIRA REMONTTI</option>
+                <option value="JUAN DE ANDRADE DE FREITAS">JUAN DE ANDRADE DE FREITAS</option>
+                <option value="KAIKY DA SILVA GOMES">KAIKY DA SILVA GOMES</option>
+                <option value="LAYSLA OLIVEIRA DA SILVA">LAYSLA OLIVEIRA DA SILVA</option>
+                <option value="LEVI DA ROCHA FERREIRA COUTO">LEVI DA ROCHA FERREIRA COUTO</option>
+                <option value="LUIZ ANTONIO DE SOUSA ALMEIDA">LUIZ ANTONIO DE SOUSA ALMEIDA</option>
+                <option value="LUIS FELIPE DA SILVA LIMA">LUIS FELIPE DA SILVA LIMA</option>
+                <option value="MARCELO MOURA LIMA">MARCELO MOURA LIMA</option>
+                <option value="MARIA CLARICE NUNES NOGUEIRA">MARIA CLARICE NUNES NOGUEIRA</option>
+                <option value="MARIA JULIA VICTOR VASCONCELOS">MARIA JULIA VICTOR VASCONCELOS</option>
+                <option value="MARIA STEPHANY DA SILVA MARTINS">MARIA STEPHANY DA SILVA MARTINS</option>
+                <option value="MARIANA NASCIMENTO PINTO">MARIANA NASCIMENTO PINTO</option>
+                <option value="MATHEUS BARBOSA DA ROCHA SILVA">MATHEUS BARBOSA DA ROCHA SILVA</option>
+                <option value="MONIKA DE CASTRO LESSA">MONIKA DE CASTRO LESSA</option>
+                <option value="NAYARA KELLY MONTEIRO SILVA">NAYARA KELLY MONTEIRO SILVA</option>
+                <option value="NICOLAS FERREIRA ANDRADE">NICOLAS FERREIRA ANDRADE</option>
+                <option value="PAOLA RIKELY MOREIRA">PAOLA RIKELY MOREIRA</option>
+                <option value="PEDRO LUCAS CORREIA RAVETE">PEDRO LUCAS CORREIA RAVETE</option>
+                <option value="RAYANE FERREIRA PRATA">RAYANE FERREIRA PRATA</option>
+                <option value="RENAN VICTOR REBOUCAS DE SOUSA">RENAN VICTOR REBOUCAS DE SOUSA</option>
+                <option value="ROSIELY CARVALHO DE SOUSA">ROSIELY CARVALHO DE SOUSA</option>
+                <option value="SUZANA GABRIELLA FERREIRA DE SALES">SUZANA GABRIELLA FERREIRA DE SALES</option>
+                <option value="TELRY HELLEN GOMES FERREIRA">TELRY HELLEN GOMES FERREIRA</option>
+                <option value="THAYNA COSTA DE ANDRADE DANTAS">THAYNA COSTA DE ANDRADE DANTAS</option>
+                <option value="VERBENIA BARROS SILVA">VERBENIA BARROS SILVA</option>
+                <option value="VITORIA INGRID DA SILVA MIRANDA">VITORIA INGRID DA SILVA MIRANDA</option>
+                <option value="YGOR GUEDES DE AZEVEDO">YGOR GUEDES DE AZEVEDO</option>
+            </select>
+            </select>
+            <label for="loginPassword">Senha:</label>
+            <input type="password" id="loginPassword" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    
+
+    <script>
+        // Objeto associativo para armazenar as senhas fixas por usuário
+        let userPasswords = {
+            "ALEF PAIVA DE ARAUJO": "senha_alef",
+            "ANA KAROLINE DA SILVA DO NASCIMENTO": "senha_ana_karoline",
+            "ANA VITORIA FELIX DA SILVA OLIVEIRA": "senha_ana_vitoria",
+            "ANAMI DE PAULO AMARAL": "senha_anami",
+            "ANDREY PABLO SALES NOJOSA": "senha_andrey",
+            "ANNY VIOLETA LOPES FERREIRA": "senha_anny_violeta",
+            "BIANCA EMILLY HOLANDA DA SILVA": "senha_bianca_emilly",
+            "CAIO ENOQUE COSTA FERREIRA": "senha_caio_enoque",
+            "DEBORA ELEN NASCIMENTO COSTA": "senha_debora_elen",
+            "EDSON SILVA DE VASCONCELOS": "senha_edson_silva",
+            "ELOA BARBOSA RODRIGUES SALES": "senha_eloa_barbosa",
+            "EMILLY DA SILVA DE FREITAS": "senha_emilly_silva",
+            "EVELYN DE SOUSA BEZERRA": "senha_evelyn_sousa",
+            "EVELYN HILARY LIMA LINHARES": "senha_evelyn_hilary",
+            "FILIPE ERNANDEZ MAGALHAES FREITAS": "senha_filipe_ernandez",
+            "FRANCISCA FLAVIANE DA SILVA AGUIAR": "senha_francisca_flaviane",
+            "GABRIEL DA SILVA COUTINHO": "senha_gabriel_silva",
+            "IZABEL MENDONÇA DA SILVA": "senha_izabel_mendonca",
+            "JENYFFER MAIRA VIEIRA REMONTTI": "senha_jenyffer_maira",
+            "JUAN DE ANDRADE DE FREITAS": "senha_juan_de_andrade",
+            "KAIKY DA SILVA GOMES": "senha_kaiky_silva",
+            "LAYSLA OLIVEIRA DA SILVA": "senha_laysla_oliveira",
+            "LEVI DA ROCHA FERREIRA COUTO": "senha_levi_rocha",
+            "LUIZ ANTONIO DE SOUSA ALMEIDA": "senha_luiz_sousa",
+            "LUIS FELIPE DA SILVA LIMA": "senha_luis_felipe",
+            "MARCELO MOURA LIMA": "senha_marcelo_moura",
+            "MARIA CLARICE NUNES NOGUEIRA": "senha_maria_clarice",
+            "MARIA JULIA VICTOR VASCONCELOS": "senha_maria_julia",
+            "MARIA STEPHANY DA SILVA MARTINS": "senha_maria_stephany",
+            "MARIANA NASCIMENTO PINTO": "senha_mariana_nascimento",
+            "MATHEUS BARBOSA DA ROCHA SILVA": "senha_matheus_barbosa",
+            "MONIKA DE CASTRO LESSA": "senha_monika_castro",
+            "NAYARA KELLY MONTEIRO SILVA": "senha_nayara_kelly",
+            "NICOLAS FERREIRA ANDRADE": "senha_nicolas_ferreira",
+            "PAOLA RIKELY MOREIRA": "senha_paola_rikely",
+            "PEDRO LUCAS CORREIA RAVETE": "senha_pedro_lucas",
+            "RAYANE FERREIRA PRATA": "senha_rayane_ferreira",
+            "RENAN VICTOR REBOUCAS DE SOUSA": "senha_renan_victor",
+            "ROSIELY CARVALHO DE SOUSA": "senha_rosiely_carvalho",
+            "SUZANA GABRIELLA FERREIRA DE SALES": "senha_suzana_gabriella",
+            "TELRY HELLEN GOMES FERREIRA": "senha_telry_hellen",
+            "THAYNA COSTA DE ANDRADE DANTAS": "senha_thayna_costa",
+            "VERBENIA BARROS SILVA": "senha_verbenia_barros",
+            "VITORIA INGRID DA SILVA MIRANDA": "senha_vitoria_ingrid",
+            "YGOR GUEDES DE AZEVEDO": "senha_ygor_guedes",
+        };
+        function login(event) {
+            event.preventDefault();
+
+            let name = document.getElementById('loginName').value;
+            let password = document.getElementById('loginPassword').value;
+
+            // Verificando se a senha fornecida é válida para o usuário
+            if (userPasswords.hasOwnProperty(name) && userPasswords[name] === password) {
+                alert('Login bem-sucedido para ' + name);
+                // Redirecionar para a página "sala_ta1.html" se a senha estiver correta
+                window.location.href = 'sala_ta1.html';
+                return; // Adicionamos um return para evitar a limpeza dos campos
+            } else {
+                alert('Senha incorreta para ' + name);
+            }
+
+            clearLoginForm();
+        }
+
+        function clearLoginForm() {
+            document.getElementById('loginName').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+    </script>
+</body>
+
+</html>
